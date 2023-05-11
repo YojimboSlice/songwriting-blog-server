@@ -1,7 +1,8 @@
-const express = require('express');
-const app = express();
+// import the 'netlify-faunadb' package
+const { handler } = require('netlify-faunadb');
 
-app.get('/api', (req, res) => {
+// Define your serverless function using the 'handler' method
+module.exports = handler(async (event, context) => {
   const posts = [
     {
       id: 1,
@@ -11,9 +12,10 @@ app.get('/api', (req, res) => {
       summary: 'Understanding why I get writers block',
     },
   ];
-  res.json({
-    posts,
-  });
-});
 
-module.exports = app;
+  // Return the response
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ posts }),
+  };
+});
