@@ -1,5 +1,6 @@
 [build]
-  base = "songwriting-blog-server"
+  base = "functions"
+  command = "npm run build:functions"
   functions = "functions"
 
 [[redirects]]
